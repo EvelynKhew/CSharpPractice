@@ -1,0 +1,14 @@
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\bin\Debug\netcoreapp3.1\userBirthday.exe
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\bin\Debug\netcoreapp3.1\userBirthday.deps.json
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\bin\Debug\netcoreapp3.1\userBirthday.runtimeconfig.json
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\bin\Debug\netcoreapp3.1\userBirthday.runtimeconfig.dev.json
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\bin\Debug\netcoreapp3.1\userBirthday.dll
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\bin\Debug\netcoreapp3.1\userBirthday.pdb
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.csproj.AssemblyReference.cache
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.AssemblyInfoInputs.cache
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.AssemblyInfo.cs
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.csproj.CoreCompileInputs.cache
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.dll
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.pdb
+C:\Users\Evelyn\OneDrive\Documents\CSharpPractice\userBirthday\obj\Debug\netcoreapp3.1\userBirthday.genruntimeconfig.cache
