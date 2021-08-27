@@ -4,40 +4,143 @@ using System.Threading;
 namespace userBirthday
 {
 
-    /**
-     * Lookup the System.DateTime structure.  This type contains a large amount of functionality that allows a user to perform all sorts 
-     * of interesting operations with dates and times.  Use System.DateTime along with System.Console to implement a simple C# program that 
-     * does the following:
-     * Ask the user for their birthday.  It will probably easiest to ask year, then month, then day rather than parsing a combined string 
-     * reliably.
-     * Calculate the age of the user.
-     * Check to see if the age of the user is impossible.  For example, if the user is not yet born, output an error message.  
-     * If the user claims to be 135 years old, then let them know that's not possible.
-     * Output the age of the user to the console.
-     * If it is the user's birthday, output a nice message.
-     * Compute the user's astrological sign according to both the Western (sun sign) and Chinese astrological systems.  
-     * If you are not familiar with these astrological systems, look them up on the web.
-     * Output the computed signs to the console.  Optionally output additional information (e.g. horoscope of the day) about the user 
-     * based on their sign.
-    **/
+   /**Exercise 1 from: www1.cs.columbia.ecu/~lok/csharp/assignments.html
+    * Takes in user's birthday and calculates the age of the user. Outputs a nice message if it is the birthday of user. 
+    * Computers user's Western and Chinese astrological sign and outputs to console. 
+    * Optional (unimplemented): Horoscope of the day. 
+    */
 
     class Program
     {
+        private String westZodiac(int mth, int date) {
+            if ((mth == 3 && date >= 21) || (mth == 4 && date <= 19))
+                return "Aries";
+            else if ((mth == 4 && date >= 20) || (mth == 5 && date <= 20))
+                return "Taurus";
+            else if ((mth == 5 && date >= 21) || (mth == 6 && date <= 20))
+                return "Gemini";
+            else if ((mth == 6 && date >= 21) || (mth == 7 && date <= 22))
+                return "Cancer";
+            else if ((mth == 7 && date >= 23) || (mth == 8 && date <= 22))
+                return "Leo";
+            else if ((mth == 8 && date >= 23) || (mth == 9 && date <= 22))
+                return "Virgo";
+            else if ((mth == 9 && date >= 23) || (mth == 10 && date <= 22))
+                return "Libra";
+            else if ((mth == 10 && date >= 23) || (mth == 11 && date <= 21))
+                return "Scorpio";
+            else if ((mth == 11 && date >= 22) || (mth == 12 && date <= 21))
+                return "Sagittarius";
+            else if ((mth == 12 && date >= 22) || (mth == 1 && date <= 19))
+                return "Capricorn";
+            else if ((mth == 1 && date >= 20) || (mth == 2 && date <= 18))
+                return "Aquarius";
+            else if ((mth == 2 && date >= 19) || (mth == 3 && date <= 20))
+                return "Pisces";
+            else
+                return null;
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello! Welcome to your personal birthday calculator! To start, please enter your birth year:");
-
-            string bYear = Console.ReadLine();
-            Console.WriteLine($"Cool! So your birth year is {bYear}, huh? Let's see...");
-            Thread.Sleep(1000);
-            Console.WriteLine("Okay, now, enter your birth month in numerics, January being 1 and December being 12, please.");
-            string bMonth = Console.ReadLine();
-            Console.WriteLine($"Okay, so you're born in {bMonth}. Cool, cool. Hmm....");
-
             DateTime today = DateTime.Now;
-            Console.WriteLine(today.ToString());
+            int curYear = today.Year;
+            int curMonth = today.Month;
+            int curDay = today.Day;
+            int uAge = 0;
+            string wZodiac = "<western zodiac unimplemented yet>";
+            string cZodiac = "<chinese zodiac unimplemented yet>";
 
+            //getting user birth year
+            Console.WriteLine("Hello! Welcome to your personal birthday calculator! To start, please enter your birth year:");
+            string sYear = null;
+            int iYear= 0;
+            while (true){
+                while (true){
+                    sYear = Console.ReadLine();
+                    bool wrongYearInput = false;
+                    if (!int.TryParse(sYear, out iYear)){
+                        Console.WriteLine("I would really appreciate it if you gave me a single number for your birthyear, please...");
+                        wrongYearInput = true;
+                    }
+                    else if (iYear < 1){
+                        Console.WriteLine($"Excuse me, sir! There are no negative numbers in years, and {iYear} clearly is one!");
+                        wrongYearInput = true;
+                    }
+                    if (wrongYearInput == false) { break; }
+
+                }
+
+                Console.WriteLine($"Cool! So your birth year is {iYear}, huh? Let's see...");
+                uAge = curYear - iYear;
+
+                //for flavour purposes. I'm trying to make it seem like the console is thinking
+                Thread.Sleep(3000);
+                if (uAge < 0 || uAge > 120){
+                    Console.WriteLine($"Wait, hold on just a minute!! If you were born in the year {iYear}, then that means you would be {uAge} years old!");
+                    Console.WriteLine("That's not possible, unless if you're not a human! Please just give me a real birthyear!!");
+                }
+                else {
+                    break; 
+                }
+
+            }
+
+            //getting user birth month
+            Console.WriteLine("Okay, now, enter your birth month in numerics, January being 1 and December being 12, please.");
+            string sMonth = null;
+            int iMonth = 0;
+            while (true){
+                sMonth = Console.ReadLine();
+                if (!int.TryParse(sMonth, out iMonth)) {
+                    Console.WriteLine($"I'm sorry, but uh, {sMonth} doesn't look like a number to me, man. Try again?");
+                }
+                else if(iMonth < 1 || iMonth > 12) {
+                    Console.WriteLine($"Okay but like I said, January is supposed to be 1 and December is supposed to be 12. Does {iMonth} look like its between 1 and 12? Geez...");
+                }
+                else {
+                    DateTime temp = new DateTime(iYear, iMonth, 3);
+                    sMonth = temp.ToString("MMMM");
+                    break;
+                }
+            }
+            Console.WriteLine($"Okay, so you're born in {sMonth}. Cool, cool. Hmm....");
+
+            //getting user birth date.
+            Console.WriteLine("One last thing, and you won't have to do anything anymore. I promise. What date were you born on?");
+            int daysInMonth = System.DateTime.DaysInMonth(iYear, iMonth); 
+            string sDate = null;
+            int iDate = 0;
+            while (true) {
+                sDate = Console.ReadLine();
+
+                if (!int.TryParse(sDate, out iDate)) {
+                    Console.WriteLine($"{sDate} is not a valid date. Please try again.");
+                }
+                else if (iDate < 1 || iDate > daysInMonth) {
+                    Console.WriteLine("That must have been a mistake, try again?");
+                }
+                else { 
+                    break; }
+            }
+            if (iMonth == today.Month && iDate == today.Day)
+                Console.WriteLine("Oh, its your birthday today! Happy birthday!! :D \nHave lots and lots of cake for me, okay?");
+
+            if ((iMonth > today.Month) || (iMonth == today.Month && iDate > today.Day)) {
+                uAge--;
+                if ((iMonth == today.Month && (iDate == today.Day + 1)))
+                    Console.WriteLine("Oh, your birthday is tomorrow! Happy birthday in advance!! I hope you have a good one this year!");
+            }
+
+            Console.WriteLine($"Okay, so I've determined that you're currently {uAge}. How nice!");
+
+            Program p = new Program();
+            wZodiac = p.westZodiac(iMonth, iDate);
+
+            Console.WriteLine($"You're a {wZodiac}, and a {cZodiac}. Huh. Good to know.");
             
+            //TODO: User CN zodiac
         }
+
     }
 }
