@@ -154,7 +154,6 @@ namespace userBirthday
 
             Console.WriteLine($"You're a {wZodiac} (according to the western zodiac), and a {cZodiac} (according to the eastern, specifically Chinese Zodiac). Huh. Good to know.");
             
-            //TODO: User CN zodiac
         }
 
     }
