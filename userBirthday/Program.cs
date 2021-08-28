@@ -8,10 +8,13 @@ namespace userBirthday
     * Takes in user's birthday and calculates the age of the user. Outputs a nice message if it is the birthday of user. 
     * Computers user's Western and Chinese astrological sign and outputs to console. 
     * Optional (unimplemented): Horoscope of the day. 
+    * 
+    * @author: Evelyn Khew
     */
 
     class Program
     {
+        //method used to calculate western zodiac
         private String westZodiac(int mth, int date) {
             if ((mth == 3 && date >= 21) || (mth == 4 && date <= 19))
                 return "Aries";
@@ -39,6 +42,17 @@ namespace userBirthday
                 return "Pisces";
             else
                 return null;
+        }
+
+        /** method used to calculate a rough estimate of the Chinese Zodiac. Does not take actual birth date into consideration. 
+         * E.G.: if you were born before CNY in 2020, i.e. Jan 25, 2020, you would still be considered a Rat, even though technically you're a Pig. 
+         * Unfortunate, but I have yet to figure out a way to do it properly :(
+         */
+        private string cnZodiac(int year) {
+            //starting with Monkey because the Monkey years are divisible by 12.
+            string[] zodiacAnimals = { "Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox", "Tiger", "Rabbit", "Snake", "Horse", "Sheep" };
+
+            return zodiacAnimals[year % 12];
         }
 
         static void Main(string[] args)
@@ -136,8 +150,9 @@ namespace userBirthday
 
             Program p = new Program();
             wZodiac = p.westZodiac(iMonth, iDate);
+            cZodiac = p.cnZodiac(iYear);
 
-            Console.WriteLine($"You're a {wZodiac}, and a {cZodiac}. Huh. Good to know.");
+            Console.WriteLine($"You're a {wZodiac} (according to the western zodiac), and a {cZodiac} (according to the eastern, specifically Chinese Zodiac). Huh. Good to know.");
             
             //TODO: User CN zodiac
         }
